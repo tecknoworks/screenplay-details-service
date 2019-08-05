@@ -2,6 +2,7 @@ const ContentRating = require('../models').contentRating
 
 module.exports={
     seed: async function(){
+        await ContentRating.deleteMany()
         await ContentRating.insertMany(
             [
                 {

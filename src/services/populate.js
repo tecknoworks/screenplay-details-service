@@ -9,9 +9,28 @@ module.exports = {
         return idMapList
     },
     populateIdMap : async function(idMap){
+
+        if(idMap instanceof Array){
+            throw Error("Populate: was an array")
+        }
         for(var property in idMap){
-            idMap[property] = await models[property].findById(idMap[property])
+            if(property.includes('List')){
+                let idList=idMap[property]
+                let propertyLength=property.length
+                let model=models[property.substring(0,propertyLength-4)]
+                for(var i=0;i<idList.length;i++){
+                    let doc=await model.findById(idList[i])
+                    idList[i]=doc.toObject()
+                }
+                idMap[property]=idList
+            }else{
+                let model=models[property]
+                let id=idMap[property]
+                let result = await model.findById(id)
+                idMap[property] = result.toObject()
+            }
         }
         return idMap
+
     }
 }

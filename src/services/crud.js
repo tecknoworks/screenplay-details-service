@@ -1,13 +1,15 @@
 module.exports = function (Model) {
     return {
         getAll: async function () {
-            return Model.find().lean()
+            let resultList = await Model.find()
+            return resultList.map(doc => doc.toObject())
         },
         getById: async function (id) {
-            return Model.findById(id).lean()
+            let result = await Model.findById(id);
+            return result.toObject();
         },
         insert: async function (ModelMap) {
-            return Model.create(ModelMap).lean()
+            return Model.create(ModelMap)
         },
         delete: async function (id) {
             return Model.findByIdAndDelete(id)

@@ -2,6 +2,7 @@ const Actor = require('../models/actor').Actor
 
 module.exports={
     seed: async function( ){
+        await Actor.deleteMany()
         await Actor.insertMany([
             {name: 'Morgan Freeman'},
             {name: 'Jason Statham'},
