@@ -6,8 +6,8 @@ const producerSeeder = require('./producer')
 module.exports={
     seed : async function(){
         await genreSeeder.seed()
-        // await actorSeeder.seed()
-        // await contentRatingSeeder.seed()
-        // await producerSeeder.seed()
+        await actorSeeder.seed()
+        await contentRatingSeeder.seed()
+        await producerSeeder.seed()
     }
 }
