@@ -8,11 +8,11 @@ const port = 3001
 app.use(cors())
 app.use(bodyParser.json())
 
-const router = require('./src/api/index')
+const router = require('./api/index')
 
-const connection=require('./src/loaders/mongoose');
+const connection=require('./loaders/mongoose');
 
-const seeder=require('./src/seeders/index')
+const seeder=require('./seeders/index')
 
 // seeder.seed()
 
