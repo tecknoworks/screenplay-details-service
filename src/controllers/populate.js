@@ -3,7 +3,9 @@ const PopulateService = require('../services/index').PopulateService
 module.exports={
     populateIdMapCtrl: async function(req,res){      
         try {
-            res.send( await PopulateService.populateIdMap(req.body) )
+            var movieDetails = await PopulateService.populateIdMap(req.body)
+
+            res.send(movieDetails)
         } catch (error) {
             res.send(error.message)
         }  
@@ -11,7 +13,8 @@ module.exports={
     },
     populateIdMapListCtrl: async function(req,res){      
         try {
-            res.send( await PopulateService.populateIdMapList(req.body) )
+            var moviesDetails = await  PopulateService.populateIdMapList(req.body)
+            res.send( moviesDetails )
         } catch (error) {
             res.send(error.message)
         }  
