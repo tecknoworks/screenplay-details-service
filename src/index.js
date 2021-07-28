@@ -17,7 +17,7 @@ const connection=require('./loaders/mongoose');
 
 const seeder=require('./seeders/index')
 
-// seeder.seed()
+seeder.seed()
 
 app.use('/details', router)
 

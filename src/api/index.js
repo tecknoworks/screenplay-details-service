@@ -4,7 +4,6 @@ const populateApi = require('./populate')
 const crudApi = require('./crud')
 const Controllers = require('../controllers')
 
-
 router.use('/populate', populateApi)
 
 router.use('/actor', crudApi(Controllers.ActorController, express.Router()))
